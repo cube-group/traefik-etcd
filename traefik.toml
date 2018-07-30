@@ -1,0 +1,109 @@
+debug = true
+logLevel = "DEBUG"
+InsecureSkipVerify = false
+defaultEntryPoints = ["http"]
+sendAnonymousUsage = false
+
+[traefikLog]
+  filePath = "/traefik.log"
+
+[accessLog]
+  filePath = "/traefik.access"
+
+[respondingTimeouts]
+  readTimeout = "0s"
+  writeTimeout = "0s"
+  idleTimeout = "180s"
+
+[forwardingTimeouts]
+  dialTimeout = "30s"
+  responseHeaderTimeout = "0s"
+
+[entryPoints]
+  [entryPoints.traefik]
+    address = ":10001"
+    compress = true
+  [entryPoints.http]
+    address = ":10000"
+    compress = true
+
+[api]
+  entryPoint = "traefik"
+  dashboard = true
+  debug = true
+  [api.statistics]
+    RecentErrors = 100
+
+[ping]
+  entryPoint = "traefik"
+
+[metrics]
+  [metrics.statistics]
+    RecentErrors = 10
+  [metrics.prometheus]
+    entryPoint = "traefik"
+    buckets=[0.1,0.3,1.2,5.0]
+
+
+
+################################################################
+# Etcd Provider
+################################################################
+
+# Enable Etcd Provider.
+[etcd]
+
+# Etcd server endpoint.
+#
+# Required
+# Default: "127.0.0.1:2379"
+#
+endpoint = "127.0.0.1:2379"
+
+# Enable watch Etcd changes.
+#
+# Optional
+# Default: true
+#
+watch = true
+
+# Prefix used for KV store.
+#
+# Optional
+# Default: "/traefik"
+#
+prefix = "/traefik"
+
+# Force to use API V3 (otherwise still use API V2)
+#
+# Deprecated
+#
+# Optional
+# Default: false
+#
+#useAPIV3 = true
+
+
+# Override default configuration template.
+# For advanced users :)
+#
+# Optional
+#
+# filename = "etcd.tmpl"
+
+# Use etcd user/pass authentication.
+#
+# Optional
+#
+# username = foo
+# password = bar
+
+# Enable etcd TLS connection.
+#
+# Optional
+#
+#    [etcd.tls]
+#    ca = "/etc/ssl/ca.crt"
+#    cert = "/etc/ssl/etcd.crt"
+#    key = "/etc/ssl/etcd.key"
+#    insecureSkipVerify = true
