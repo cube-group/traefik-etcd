@@ -1,14 +1,18 @@
-debug = true
-logLevel = "DEBUG"
+debug = false
+# 可选
+# 默认: "ERROR"
+# 接受以下值，按照严重程度排序: "DEBUG", "INFO", "WARN", "ERROR", "FATAL", "PANIC"
+# 日志等级在配置值或配置值以上的信息将被日志记录。
+logLevel = "INFO"
 InsecureSkipVerify = false
 defaultEntryPoints = ["http"]
 sendAnonymousUsage = false
 
-[traefikLog]
-  filePath = "/traefik.log"
+#[traefikLog]
+#  filePath = "/traefik.log"
 
-[accessLog]
-  filePath = "/traefik.access"
+#[accessLog]
+#  filePath = "/traefik.access"
 
 [respondingTimeouts]
   readTimeout = "0s"
