@@ -85,7 +85,7 @@ prefix = "/traefik"
 # Optional
 # Default: false
 #
-#useAPIV3 = true
+useAPIV3 = true
 
 
 # Override default configuration template.
