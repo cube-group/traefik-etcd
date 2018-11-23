@@ -6,6 +6,7 @@
 * [github traefik](https://github.com/containous/traefik)
 * [github etcd](https://github.com/etcd-io/etcd)
 ### 镜像使用
+端口10000为代理服务端口,端口10001为管理界面端口
 ```
 docker run -d -it --restart=alwasy \
 -p 10000:10000 \
