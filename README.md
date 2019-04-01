@@ -1,4 +1,6 @@
 ## traefik etcd
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
+
 以etcd v3为后端的traefik代理服务
 ### 支持方
 * [traefik.io](https://traefik.io)
@@ -8,13 +10,13 @@
 ### 镜像使用
 端口10000为代理服务端口,端口10001为管理界面端口
 ```
-docker run -d -it --restart=alwasy \
+docker run -d -it --restart=always \
 -p 10000:10000 \
 -p 10001:10001 \
 -e ETCD_PREFIX="/traefik/test" \
 -e ETCD_ENDPOINT="127.0.0.1:2379" \
 --name my-traefik-etcd-v3 \
-registry.eoffcn.com/base/etcd
+your-private-registry/base/etcd
 ```
 ### 版本
 v1.7.4
